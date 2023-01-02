@@ -1,0 +1,27 @@
+{
+    "type": "module",
+    "exports": {
+        ".": {
+            "import": "./build/main.js",
+            "types": "./build/main.d.ts"
+        }
+    },
+    "scripts": {
+        "build": "asc main.ts --target release",
+        "start": "wasmtime-http --wasi-modules=experimental-wasi-http build/main.wasm",
+        "clean": "rm -rf build",
+        "really-clean": "rm -rf build node_modules"
+    },
+    "devDependencies": {
+        "@assemblyscript/wasi-shim": "^0.1.0",
+        "assemblyscript": "^0.25.0"
+    },
+    "dependencies": {
+        "@brendandburns/wasi-http-ts": "file:../../wasi-http-ts/brendandburns-wasi-http-ts-0.11.0.tgz",
+        "@deislabs/wasi-experimental-http": "^0.10.0",
+        "as-bignum": "^0.2.23",
+        "as-wasi": "^0.5.1",
+        "json-as": "^0.5.15",
+        "visitor-as": "^0.11.4"
+    }
+}
